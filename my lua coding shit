@@ -1,0 +1,133 @@
+my coding examples:
+
+local campos1 = 1280
+local campos2 = 720
+
+function onSongStart()
+
+    makeLuaText('watermark', "Composed By bbpanzu", 0, 1057, 690);
+    setTextSize('watermark', 18);
+    addLuaText('watermark');
+    
+end
+
+function onCreate()
+    setProperty('camPos.x',campos1)
+    setProperty('camPos.y',campos2)
+    setProperty('skipCountdown',true)
+    setProperty('gf.visible',false)
+    setProperty('camHUD.visible',false)
+end
+
+function onStepHit()
+    if curStep == 81 then
+        setProperty('camHUD.visible',true)
+
+    end
+end
+
+
+
+
+local bigzoom = 289;
+local normalzoom = 0.9;
+local silencezoom = 1.2;
+local singlesingzoom = 1.5;
+
+function onCreate()
+setProperty('gf.visible',false)
+setProperty('camHUD.visible',false)
+setProperty('skipCountdown',true)
+
+    setProperty('defaultCamZoom',0.8)
+    makeLuaSprite('bartop','',-100,-260)
+    makeGraphic('bartop',1280,100,'000000')
+    addLuaSprite('bartop',true)
+    setScrollFactor('bartop',0,0)
+    scaleObject('bartop',3,3)
+
+    makeLuaSprite('barbot','',-100,680)
+    makeGraphic('barbot',1280,100,'000000')
+    addLuaSprite('barbot',true)
+    setScrollFactor('barbot',0,0)
+    scaleObject('barbot',3,3)
+
+    makeLuaText('watermark', "Composed By Saruky", 0, 1057, 690);
+    setTextSize('watermark', 18);
+    addLuaText('watermark');
+
+function onStepHit()
+
+   if curStep == 28 then
+    setProperty("defaultCamZoom",bigzoom)
+    setProperty("camGame.zoom",bigzoom)
+
+end
+
+   if curStep == 32 then
+   setProperty('camHUD.visible',true) 
+    setProperty("defaultCamZoom",normalzoom)
+    setProperty("camGame.zoom",normalzoom)
+
+end
+
+       if curStep == 540 then
+
+    setProperty("defaultCamZoom",silencezoom)
+    setProperty("camGame.zoom",silencezoom)
+    setProperty('camHUD.visible',false)
+
+end
+
+       if curStep == 544 then       
+    setProperty("defaultCamZoom",singlesingzoom)
+    setProperty("camGame.zoom",singlesingzoom)
+    setProperty('camHUD.visible',true)
+    setObjectCamera('barbot','hud')
+    setObjectCamera('bartop','hud')
+    setProperty('healthBar.visible', false);
+    setProperty('healthBarBG.visible', false);
+    setProperty('iconP1.visible', false);
+    setProperty('iconP2.visible', false);
+
+end
+
+       if curStep == 1136 then
+    removeLuaSprite('bartop', false);
+    removeLuaSprite('barbot', false);
+    setObjectCamera('bartop', 'game');
+    setObjectCamera('barbot', 'game');
+    addLuaSprite('bartop', true);
+    addLuaSprite('barbot', true);
+    setProperty('healthBar.visible', true);
+    setProperty('healthBarBG.visible', true);
+    setProperty('iconP1.visible', true);
+    setProperty('iconP2.visible', true);
+
+end
+
+       if curStep == 1584 then
+    setObjectCamera('barbot','hud')
+    setObjectCamera('bartop','hud')
+    setProperty('healthBar.visible', false);
+    setProperty('healthBarBG.visible', false);
+    setProperty('iconP1.visible', false);
+    setProperty('iconP2.visible', false);
+
+end
+
+       if curStep == 1664 then
+    removeLuaSprite('bartop', false);
+    removeLuaSprite('barbot', false);
+    setObjectCamera('bartop', 'game');
+    setObjectCamera('barbot', 'game');
+    addLuaSprite('bartop', true);
+    addLuaSprite('barbot', true);
+    setProperty('healthBar.visible', true);
+    setProperty('healthBarBG.visible', true);
+    setProperty('iconP1.visible', true);
+    setProperty('iconP2.visible', true);
+
+end
+end
+end
